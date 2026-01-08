@@ -1,0 +1,8 @@
+version: '3'
+services:
+  vremenar:
+    build: .
+    container_name: weather-training-app
+    ports:
+      - "80:80"
+    restart: always  # To poskrbi za samodejni zagon ob restartu RPi
