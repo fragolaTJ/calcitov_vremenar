@@ -141,7 +141,7 @@ function App() {
     const getStatusColor = (status) => {
         if (status === "Trening naj bo!") return "#4CAF50"; // zelena
         if (status === "POGOJNO") return "#FFC107"; // rumena
-        if (status === "PREKLIČI") return "#F44336"; // rdeča
+        if (status === "ODPOVEDANO") return "#F44336"; // rdeča
         return "#999";
     };
 
@@ -215,7 +215,7 @@ function App() {
         //if (hour. > 20) borderline = true;
         //if (current.uv > 7) borderline = true;
 
-        if (cancel) return "PREKLIČI";
+        if (cancel) return "ODPOVEDANO";
         if (borderline) return "POGOJNO";
         return "Trening naj bo!";
     }, []);
@@ -226,8 +226,8 @@ function App() {
         for (const h of hours) {
             const status = analyzeForecastWeather(h);
 
-            if (status === "PREKLIČI") return "PREKLIČI";
-            if (status === "POGOJNO" && worst !== "PREKLIČI") worst = "POGOJNO";
+            if (status === "ODPOVEDANO") return "ODPOVEDANO";
+            if (status === "POGOJNO" && worst !== "ODPOVEDANO") worst = "POGOJNO";
         }
 
         return worst;
