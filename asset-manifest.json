@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/calcitov_vremenar/static/css/main.323d7611.css",
-    "main.js": "/calcitov_vremenar/static/js/main.f1918d2c.js",
+    "main.js": "/calcitov_vremenar/static/js/main.9c7b70d9.js",
     "static/js/453.75267275.chunk.js": "/calcitov_vremenar/static/js/453.75267275.chunk.js",
     "index.html": "/calcitov_vremenar/index.html",
     "main.323d7611.css.map": "/calcitov_vremenar/static/css/main.323d7611.css.map",
-    "main.f1918d2c.js.map": "/calcitov_vremenar/static/js/main.f1918d2c.js.map",
+    "main.9c7b70d9.js.map": "/calcitov_vremenar/static/js/main.9c7b70d9.js.map",
     "453.75267275.chunk.js.map": "/calcitov_vremenar/static/js/453.75267275.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.323d7611.css",
-    "static/js/main.f1918d2c.js"
+    "static/js/main.9c7b70d9.js"
   ]
 }
