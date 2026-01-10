@@ -2,6 +2,99 @@ import React, { useState, useEffect, useCallback } from "react";
 import { MapContainer, TileLayer, ImageOverlay } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+// Legenda pogojev komponenta
+function LegendTooltip() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div style={{ position: "relative", display: "inline-block", marginLeft: "10px" }}>
+      <span
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+        onClick={() => setIsVisible(!isVisible)}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "24px",
+          height: "24px",
+          borderRadius: "50%",
+          backgroundColor: "rgba(255,255,255,0.3)",
+          color: "white",
+          fontSize: "14px",
+          fontWeight: "bold",
+          cursor: "pointer",
+          border: "1px solid rgba(255,255,255,0.5)"
+        }}
+      >
+        ?
+      </span>
+      {isVisible && (
+        <div style={{
+          position: "absolute",
+          bottom: "35px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          backgroundColor: "#333",
+          color: "white",
+          padding: "15px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+          zIndex: 1000,
+          width: "280px",
+          fontSize: "13px",
+          lineHeight: "1.5"
+        }}>
+          <h4 style={{ margin: "0 0 10px 0", borderBottom: "1px solid #555", paddingBottom: "8px" }}>
+            📋 Legenda pogojev
+          </h4>
+          
+          <div style={{ marginBottom: "12px" }}>
+            <div style={{ color: "#4CAF50", fontWeight: "bold", marginBottom: "4px" }}>
+              🟢 Trening naj bo!
+            </div>
+            <div style={{ fontSize: "12px", color: "#ccc" }}>
+              • Padavine: {"<"} 0.3 mm<br/>
+              • Brez neviht
+            </div>
+          </div>
+          
+          <div style={{ marginBottom: "12px" }}>
+            <div style={{ color: "#FFC107", fontWeight: "bold", marginBottom: "4px" }}>
+              🟡 POGOJNO
+            </div>
+            <div style={{ fontSize: "12px", color: "#ccc" }}>
+              • Padavine: 0.3 - 1 mm<br/>
+              • Verjetnost dežja {">"} 50%
+            </div>
+          </div>
+          
+          <div style={{ marginBottom: "8px" }}>
+            <div style={{ color: "#F44336", fontWeight: "bold", marginBottom: "4px" }}>
+              🔴 PREKLIČI / Odpovedano
+            </div>
+            <div style={{ fontSize: "12px", color: "#ccc" }}>
+              • Padavine: {">"} 1 mm<br/>
+              • Verjetnost dežja {">"} 80% in padavine {">"} 1 mm<br/>
+              • Nevihta
+            </div>
+          </div>
+
+          <div style={{ 
+            marginTop: "10px", 
+            paddingTop: "8px", 
+            borderTop: "1px solid #555",
+            fontSize: "11px",
+            color: "#888"
+          }}>
+            Dotakni se "?" za zaprtje
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Radar map component
 function RadarMap({ radarUrl, radarBounds }) {
   return (
@@ -240,9 +333,13 @@ function App() {
             borderRadius: "6px",
             textAlign: "center",
             fontWeight: "bold",
-            fontSize: "18px"
+            fontSize: "18px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
           }}>
             Odločitev za trening: {current_status}
+            <LegendTooltip />
           </div>
         </div>
       )}
@@ -353,9 +450,13 @@ function App() {
             borderRadius: "6px",
             textAlign: "center",
             fontWeight: "bold",
-            fontSize: "18px"
+            fontSize: "18px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
           }}>
             Skupna odločitev za trening: {forecast_status}
+            <LegendTooltip />
           </div>
         </div>
       )}
