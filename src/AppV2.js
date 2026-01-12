@@ -74,7 +74,6 @@ function LegendTooltip() {
               🔴 PREKLIČI / Odpovedano
             </div>
             <div style={{ fontSize: "12px", color: "#ccc" }}>
-              • Padavine: {">"} 1 mm<br/>
               • Verjetnost dežja {">"} 80% in padavine {">"} 1 mm<br/>
               • Nevihta
             </div>
